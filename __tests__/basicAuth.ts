@@ -1,4 +1,4 @@
-import { basicAuth, ICustomRequest } from "../src/middlewares/basic-auth";
+import { basicAuth, ICustomRequest } from "../src/middlewares/basicAuth";
 import { IUser } from "../src/models/user";
 import { hashPassword } from "../src/utils/utils";
 import { Request, Response } from "express";
