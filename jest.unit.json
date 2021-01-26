@@ -1,0 +1,9 @@
+{
+  "preset": "ts-jest",
+  "testMatch": [
+    "**/__tests__/**/*.[jt]s?(x)"
+  ],
+  "testEnvironment": "node",
+  "globalSetup": "./migrateDatabases.js",
+  "setupFilesAfterEnv": ["<rootDir>/truncateTables.js"]  
+}
