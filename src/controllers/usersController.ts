@@ -12,12 +12,13 @@ export class UsersController {
   async register(req: Request, res: Response, next: NextFunction) {
     const { firstName, lastName, email, password } = req.body;
     const hashedPassword = hashPassword(password);
+    
     const user = await this.userRepository.create({
       firstName,
       lastName,
       email,
       password: hashedPassword,
     });
-    res.status(201).json(user)
+    res.status(201).json(user);
   }
 }

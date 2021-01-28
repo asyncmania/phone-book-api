@@ -4,6 +4,6 @@
     "**/__tests__/**/*.[jt]s?(x)"
   ],
   "testEnvironment": "node",
-  "globalSetup": "./migrateDatabases.js",
-  "setupFilesAfterEnv": ["<rootDir>/truncateTables.js"]  
+  "setupFilesAfterEnv": ["<rootDir>/truncateTables.js"],  
+  "globalSetup": "./migrateDatabases.js"
 }
