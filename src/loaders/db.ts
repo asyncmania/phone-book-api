@@ -8,6 +8,4 @@ const sequelize: Sequelize =
     ? new Sequelize(dbConfig["developement"])
     : new Sequelize(dbConfig["test"]);
 
-//console.log(sequelize.)
-
 export default sequelize;

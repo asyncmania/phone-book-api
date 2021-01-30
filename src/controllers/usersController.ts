@@ -9,10 +9,10 @@ export class UsersController {
     this.userRepository = userRepository;
   }
 
-  async register(req: Request, res: Response, next: NextFunction) {
+  async register(req: Request, res: Response, next: NextFunction): Promise<void> {
     const { firstName, lastName, email, password } = req.body;
     const hashedPassword = hashPassword(password);
-    
+
     const user = await this.userRepository.create({
       firstName,
       lastName,
