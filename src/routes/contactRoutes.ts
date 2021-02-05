@@ -10,4 +10,5 @@ export default (router: Router): void => {
   const contactsController = new ContactsController(Container.get(ContactRepository));
 
   router.post("/contacts", contactsController.create.bind(contactsController));
+  router.patch("/contacts/:id", contactsController.update.bind(contactsController))
 };

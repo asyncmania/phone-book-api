@@ -1,22 +1,19 @@
-import { Sequelize, Model, DataTypes } from "sequelize";
-import sequelize from '../loaders/db'
-
-
-type Phone = {
-  phone: string;
-  label: string
-}
-
+import { Sequelize, Model, DataTypes, Association } from "sequelize";
+import sequelize from "../loaders/db";
+import Phone, { IPhone } from "./phone";
 
 export interface IContact {
-  
+  id?: number
+  name: string;
+  address: string;
+  email: string;
+  phones?: IPhone[];
 }
 
-export default class Contact extends Model {
+class Contact extends Model {
   public id!: number;
   public name!: string;
   public address!: string;
-  public phones!: Phone[];
   public email!: string;
 }
 
@@ -31,23 +28,29 @@ Contact.init(
       type: new DataTypes.STRING(128),
       allowNull: false,
     },
-   address: {
+    address: {
       type: new DataTypes.STRING(128),
       allowNull: false,
     },
     email: {
       type: new DataTypes.STRING(128),
       allowNull: false,
-      unique: true
-    },
-    phones: {
-        type: new DataTypes.VIRTUAL(DataTypes.ARRAY(DataTypes.JSON)),
-        allowNull: false,
+      unique: true,
     }
   },
   {
     tableName: "contacts",
-    sequelize, 
+    sequelize,
   }
-)
+);
 
+Phone.belongsTo(Contact);
+
+Contact.hasMany(Phone, {
+  foreignKey: "contactId",
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+  as: "phones",
+});
+
+export default Contact;
