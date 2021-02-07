@@ -37,20 +37,32 @@ describe("contacts Controller", () => {
   });
 
   test("updating Contact", async () => {
+    const updates = { email: "sanya@gmail.com" };
 
-    const updates = { email: "sanya@gmail.com" }
-    const mockRequest = (id:string, data: any) => {
-     const req = {} as Request
-     req.params = { id }
-     req.body = data
-     return req
+    const mockRequest = (id: string, data: any) => {
+      const req = {} as Request;
+      req.params = { id };
+      req.body = data;
+      return req;
     };
 
     const req: Request = mockRequest("5", updates);
-    const res: Response = mockResponse()
+    const res: Response = mockResponse();
 
-    await contactsController.update(req, res, null)
-   
-    expect(res.json).toHaveBeenCalledWith({...contacts[0], ...updates})
+    await contactsController.update(req, res, null);
+
+    expect(res.json).toHaveBeenCalledWith({ ...contacts[0], ...updates });
+  });
+
+  test("Find all contacts", async () => {
+    const mockRequest = () => {
+      return {
+        query: {},
+      } as Request;
+    };
+    const req:Request = mockRequest();
+    const res:Response = mockResponse();
+    await contactsController.findAll(req, res, null);
+    expect(res.send).toHaveBeenCalledWith(contacts);
   });
 });
