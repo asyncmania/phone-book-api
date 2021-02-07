@@ -45,4 +45,17 @@ describe('Contact Routes', () => {
   })
 
 
+  test('Updating a contact', async () => {
+    const contact: IContact = contacts[0]
+    const token = Buffer.from(`${users[0].email}:${users[0].password}`).toString("base64")
+    const response = await request(app)
+    .patch('/api/contacts/5')
+    .set('Authorization', `Basic ${token}`)
+    .send({email: "toal@yahoo.com"})
+    .expect(200)
+    .expect('Content-Type', /json/)
+
+  })
+
+
 })

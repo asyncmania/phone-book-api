@@ -26,8 +26,8 @@ export class ContactsController {
 
   async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     const id = Number(req.params.id);
-    const updatedContact = await this.contactRepository.updateById(id, req.body);
-    res.status(200).json(updatedContact);
+     await this.contactRepository.updateById(id, req.body);
+    res.status(200).json({message: `Contact updated successfully`});
   }
 
   async delete(req: Request, res: Response, next: NextFunction): Promise<void> {

@@ -6,7 +6,9 @@ import routes from '../routes'
 import { basicAuth } from '../middlewares/basicAuth';
 import { credentialsAreValid } from '../utils/utils';
 
+
 export default (app: Application) => {
+
   app.use(cors());
 
   app.use(bodyParser.json());
@@ -15,4 +17,5 @@ export default (app: Application) => {
 
   // Load API routes
   app.use(config.api.prefix, routes());
+
 };

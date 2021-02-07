@@ -50,8 +50,8 @@ describe("contacts Controller", () => {
     const res: Response = mockResponse();
 
     await contactsController.update(req, res, null);
-
-    expect(res.json).toHaveBeenCalledWith({ ...contacts[0], ...updates });
+    expect(res.status).toHaveBeenCalledWith(200)
+    expect(res.json).toHaveBeenCalledWith({ message: `Contact updated successfully`});
   });
 
   test("Find all contacts", async () => {
