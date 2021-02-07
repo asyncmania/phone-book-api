@@ -7,9 +7,9 @@ export interface IContactRepository {
   orderBy: sortBy,
   limit: number,
   offset: number): Promise<IContact[]>;
-  updateById(id: number, props: keyof IContact): Promise<IContact>;
+  updateById(id: number, props: IContact): Promise<IContact>;
   findById(id: number): Promise<IContact>;
-  deleteById(id: number): Promise<IContact>;
+  deleteById(id: number): Promise<void>;
 }
 
 
@@ -44,13 +44,13 @@ export class ContactRepository implements IContactRepository {
     return this.contactModel.findByPk(id, { include: [phones] });
   }
 
-  updateById(id: number, props: keyof IContact) {
+  updateById(id: number, props:IContact): Promise<IContact> {
     return this.contactModel.update(props, {
       where: { id },
     });
   }
 
-  deleteById(id: number) {
+  deleteById(id: number): Promise<void> {
     return this.contactModel.destroy({ where: { id } });
   }
 }

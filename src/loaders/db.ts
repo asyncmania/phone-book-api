@@ -4,12 +4,12 @@ import dbConfig from "./db.config.js";
 const nodeEnv: string = process.env.NODE_ENV;
 
 const sequelize: Sequelize = new Sequelize(
-  dbConfig[process.env.NODE_ENV].database,
-  dbConfig[process.env.NODE_ENV].username,
-  dbConfig[process.env.NODE_ENV].password,
+  dbConfig["test"].database,
+  dbConfig["test"].username,
+  dbConfig["test"].password,
   {
-    host: dbConfig[process.env.NODE_ENV].host,
-    dialect: dbConfig[process.env.NODE_ENV].dialect,
+    host: dbConfig["test"].host,
+    dialect: dbConfig["test"].dialect,
   }
 );
  /*  process.env.NODE_ENV === "developement"

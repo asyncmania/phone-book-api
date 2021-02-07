@@ -11,7 +11,7 @@ export const users: IUser[] = [
   },
 ];
 
-export class MockUsersController implements IUserRepository {
+export class mockUsersRepository implements IUserRepository {
   async create(user: IUser): Promise<IUser> {
     return user;
   }

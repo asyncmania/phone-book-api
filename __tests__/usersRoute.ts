@@ -5,10 +5,10 @@ import { IUser } from '../src/models/user';
 import { hashPassword } from '../src/utils/utils';
 //import app from '../src/app'
 
-import { users } from '../src/__mocks__/mockUsersControllers'
+import { users } from '../src/__mocks__/mockUsersRepository'
 
 
-const app = `http://localhost:3500`;
+const app = `http://localhost:3600`;
 
 beforeEach(async () => {
  await sequelize.query(`DELETE FROM users`, null)

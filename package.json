@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon",
-    "test": "jest -c ./jest.unit.json --verbose",
+    "test": "jest -c ./jest.unit.json --verbose --detectOpenHandles",
     "migrate": "npx sequelize-cli db:migrate"
   },
   "dependencies": {

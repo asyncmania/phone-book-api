@@ -19,15 +19,15 @@ export class ContactsController {
 
 
   async findAll(req: Request, res: Response, next: NextFunction): Promise<void> {
-    const {sortBy, orderBy, limit, offset} = req.query 
+    const {sortBy, orderBy, limit, offset}  = req.query as any
     const contacts = await this.contactRepository.findAll(sortBy, orderBy, limit, offset)
     res.send(contacts)
   }
 
   async update(req: Request, res: Response, next: NextFunction): Promise<void> {
     const id = Number(req.params.id);
-    await this.contactRepository.updateById(id, req.body);
-    res.send(await this.contactRepository.findById(id));
+    const updatedContact =  await this.contactRepository.updateById(id, req.body);
+    res.status(200).json(updatedContact);
   }
 
   async delete(req: Request, res: Response, next: NextFunction): Promise<void> {
