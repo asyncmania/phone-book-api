@@ -5,17 +5,21 @@ An expressive API for contact details
 1. how to run the project
 
    Install dependencies 
+
      a. yarn install
 
         create an .env from the .env.sample
 
    Run Migrations
+
      b. npx sequelize-cli db:migrate   
 
-   Run the tests   
+   Run the tests
+
      c. yarn test
 
    Start the app
+   
      d. yarn start 
 
 
