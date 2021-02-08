@@ -4,12 +4,12 @@ import sequelize from '../src/loaders/db';
 import { IContact } from '../src/models/contact';
 import { contacts } from '../src/__mocks__/mockContactsRepository';
 import { users } from '../src/__mocks__/mockUsersRepository';
+import config from "../src/config";
 
 
 
 
-
-const app = `http://localhost:3600`;
+const app = `http://localhost:${config.port}`;
 
 beforeEach(async () => {
  await sequelize.query(`DELETE FROM contacts`, null)
@@ -33,6 +33,7 @@ describe('Contact Routes', () => {
 
     const contact: IContact = contacts[0]
     const token = Buffer.from(`${users[0].email}:${users[0].password}`).toString("base64")
+
      const response = await request(app)
      .post('/api/contacts')
      .set('Authorization', `Basic ${token}`)

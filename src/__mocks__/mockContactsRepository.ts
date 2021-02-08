@@ -6,7 +6,7 @@ export const contacts: IContact[] = [
     id:5,
     name: "Jossy",
     address: "somehere in toronto canada!",
-    email: "anotheremail@josiah.com",
+    email: "anotheremail4@josiah.com",
     phones: [
       {
         type: "home",

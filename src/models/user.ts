@@ -2,6 +2,7 @@ import { Sequelize, Model, DataTypes } from "sequelize";
 import sequelize from '../loaders/db'
 
 
+
 export interface IUser {
   firstName: string;
   lastName: string;

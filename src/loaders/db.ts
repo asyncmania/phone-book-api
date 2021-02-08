@@ -1,21 +1,7 @@
 import { Sequelize } from "sequelize";
 import dbConfig from "./db.config.js";
+import { envFound } from "../config";
 
-const nodeEnv: string = process.env.NODE_ENV;
-
-const sequelize: Sequelize = new Sequelize(
-  dbConfig[nodeEnv].database,
-  dbConfig[nodeEnv].username,
-  dbConfig[nodeEnv].password,
-  {
-    host: dbConfig[nodeEnv].host,
-    dialect: dbConfig[nodeEnv].dialect,
-  }
-);
- /*  process.env.NODE_ENV === "developement"
-    ? new Sequelize(dbConfig["developement"])
-    : new Sequelize(dbConfig["test"]); */
-
-
+const sequelize: Sequelize = new Sequelize(dbConfig[envFound.parsed.NODE_ENV]);
 
 export default sequelize;

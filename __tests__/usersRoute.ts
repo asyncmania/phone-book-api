@@ -3,12 +3,13 @@ import request from 'supertest'
 import sequelize from '../src/loaders/db';
 import { IUser } from '../src/models/user';
 import { hashPassword } from '../src/utils/utils';
-//import app from '../src/app'
+import config from "../src/config";
 
 import { users } from '../src/__mocks__/mockUsersRepository'
 
 
-const app = `http://localhost:3600`;
+const app = `http://localhost:${config.port}`;
+
 
 beforeEach(async () => {
  await sequelize.query(`DELETE FROM users`, null)
