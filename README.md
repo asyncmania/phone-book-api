@@ -35,8 +35,6 @@ An expressive API for contact details
    e. async error are handle using a higher order fn catchAsync.
 
 
-3. My Contact
 
-   ilesanmi.josiah@gmail.com    
 
    
